@@ -1,3 +1,7 @@
 body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Lucida Console", "Courier New", monospace;
+  background-color: antiquewhite;
+}
+html{
+  background-color: antiquewhite;
 }
