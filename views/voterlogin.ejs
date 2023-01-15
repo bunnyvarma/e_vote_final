@@ -19,7 +19,7 @@
     <div class="grid grid-cols-6">
       <div class="col-span-2 col-start-3">
         <div class="my-3">
-          <a href="/" class="text-2xl font-semibold text-gray-600"
+          <a href="/" class="text-2xl font-semibold text-gray-500"
             >My Online Voting App</a
           >
         </div>
@@ -30,7 +30,7 @@
           </div>
         <% } %>
 
-        <h6 class="mb-2 mt-2 font-semibold text-center text-xl text-gray-900">
+        <h6 class="mb-2 mt-2 font-semibold text-center text-xl text-gray-800">
           Voter Log-In
         </h6>
 
@@ -44,7 +44,7 @@
         <form action="/sessionVoter/<%= election.url %>" method="post">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <div>
-            <label for="voterID" class="py-1 text-xl text-gray-900"
+            <label for="voterID" class="py-1 text-xl text-gray-800"
               >Voter ID :</label
             >
             <input
@@ -52,11 +52,11 @@
               id="voterID"
               name="voterID"
               required
-              class="w-full border border-gray-600 rounded px-3 py-2 my-2 text-gray-900"
+              class="w-full border border-gray-600 rounded px-3 py-2 my-2 text-gray-800"
             />
           </div>
           <div>
-            <label for="pwd" class="py-1 text-xl text-gray-900"
+            <label for="pwd" class="py-1 text-xl text-gray-800"
               >Password :</label
             >
             <input
@@ -64,7 +64,7 @@
               id="pwd"
               name="password"
               required
-              class="w-full border border-gray-600 rounded px-3 py-2 my-2 text-gray-900"
+              class="w-full border border-gray-600 rounded px-3 py-2 my-2 text-gray-800"
             />
           </div>
           <div>
