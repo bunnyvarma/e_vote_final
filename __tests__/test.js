@@ -170,7 +170,7 @@ describe("Test case for database", () => {
 
     await agent.post(`/addquetion/${election.id}`).send({
       title: "Name of hods",
-      desc: "add a multiple hod option so the voter can vote on it.",
+      desc: "add a multiple hod options so the voter can vote on it.",
       _csrf: csrfToken,
     });
 
