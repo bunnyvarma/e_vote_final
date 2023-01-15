@@ -74,25 +74,25 @@
         <form action="/election/<%= electionID %>/addvoter" method="post">
           <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
           <div>
-            <label for="vid" class="py-1 text-xl text-gray-900"
+            <label for="vid" class="py-1 text-xl text-gray-800"
               >Voter ID :</label
             >
             <input
               type="text"
               id="vid"
               name="voterId"
-              class="w-full border-2 border-gray-800 rounded px-4 py-2 my-2 text-gray-900"
+              class="w-full border-2 border-gray-800 rounded px-4 py-2 my-2 text-gray-800"
             />
           </div>
           <div>
-            <label for="pwd" class="py-1 text-xl text-gray-900"
+            <label for="pwd" class="py-1 text-xl text-gray-800"
               >Password :</label
             >
             <input
               type="password"
               id="pwd"
               name="password"
-              class="w-full border-2 border-gray-600 rounded px-4 py-2 my-2 text-gray-900"
+              class="w-full border-2 border-gray-600 rounded px-4 py-2 my-2 text-gray-800"
             />
           </div>
           <div>
@@ -159,14 +159,14 @@
                           >
                           <input
                             type="text"
-                            class="form-control border-2 border-gray-900"
+                            class="form-control border-2 border-gray-800"
                             id="recipient-name"
                             name="pwd"
                           />
                         </div>
                         <input
                           type="submit"
-                          class="px-2 py-1 ml-2 text-sm bg-blue-400 border-2 border-gray-900"
+                          class="px-2 py-1 ml-2 text-sm bg-blue-400 border-2 border-gray-800"
                         >
 
                         </input>
@@ -175,7 +175,7 @@
                     <div class="modal-footer">
                       <button
                         type="button"
-                        class="px-2 py-1 ml-2 text-sm bg-blue-400 border-2 border-gray-900"
+                        class="px-2 py-1 ml-2 text-sm bg-blue-400 border-2 border-gray-800"
                         data-bs-dismiss="modal"
                       >
                         Close
