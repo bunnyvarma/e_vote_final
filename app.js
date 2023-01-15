@@ -12,11 +12,9 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname + "/public")));
 app.set("views", path.join(__dirname, "views"));
 
-// for csrf token
 app.use(cookieParser("Important string"));
 app.use(csrf("123456789iamasecret987654321look", ["POST", "PUT", "DELETE"]));
 
-//passport js for aurthentication
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const connectEnsureLogin = require("connect-ensure-login");
@@ -57,12 +55,12 @@ passport.use(
               return done(null, user);
             } else {
               return done(null, false, {
-                message: "Invalid password",
+                message: "Invalid Password",
               });
             }
           } else {
             return done(null, false, {
-              message: "With This email user doesn't exists",
+              message: "User not exists with this E-mail",
             });
           }
         })
@@ -77,7 +75,7 @@ passport.use(
   "voter-local",
   new LocalStrategy(
     {
-      usernameField: "voterID", // req body parameter name which we use as a id-password
+      usernameField: "voterID", 
       passwordField: "password",
     },
     (username, password, done) => {
@@ -100,7 +98,7 @@ passport.use(
             }
           } else {
             return done(null, false, {
-              message: "With This ID voter doesn't exists",
+              message: "voter doesn't exists With this ID ",
             });
           }
         })
@@ -162,7 +160,6 @@ app.get("/", async (req, res) => {
   }
 });
 
-// election end points
 app.get(
   "/listOfElection",
   connectEnsureLogin.ensureLoggedIn(),
@@ -195,15 +192,15 @@ app.post(
     console.log(req.params.id);
 
     if (req.body.title.trim().length <= 5) {
-      req.flash("error", "Title length must grater than 5");
+      req.flash("error", "Title length must be greater than 5");
       return res.redirect(`/election/${req.params.id}/addQuetion`);
     }
     if (req.body.desc.length === 0) {
-      req.flash("error", "Description Cann't be empty..");
+      req.flash("error", "Description Cannot be empty...");
       return res.redirect(`/election/${req.params.id}/addQuetion`);
     }
     if (req.body.desc.length <= 15) {
-      req.flash("error", "Description length must grater than 15");
+      req.flash("error", "Description length must be greater than 15");
       return res.redirect(`/election/${req.params.id}/addQuetion`);
     }
     try {
@@ -223,11 +220,11 @@ app.post(
 app.post("/election", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
   console.log(req.body);
   if (req.body.title.trim().length < 5) {
-    req.flash("error", "election name length must grater than 5");
+    req.flash("error", "election name length must be greater than 5");
     return res.redirect("/listOfElection");
   }
   if (req.body.url.length === 0) {
-    req.flash("error", "Url Cann't be empty..");
+    req.flash("error", "Url Cannot be empty..");
     return res.redirect("/listOfElection");
   }
   try {
@@ -242,7 +239,7 @@ app.post("/election", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     if (error.name == "SequelizeUniqueConstraintError") {
       error.errors.forEach((e) => {
         if (e.message == "url must be unique") {
-          req.flash("error", "Url used before so provide anothor one.");
+          req.flash("error", "Url is already used so provide anothor one");
         }
       });
       return res.redirect("/listOfElection");
@@ -419,7 +416,7 @@ app.post(
   connectEnsureLogin.ensureLoggedIn(),
   async (req, res) => {
     if (req.body.title.trim().length < 5) {
-      req.flash("error", "election name length must grater than 5");
+      req.flash("error", "election name length must greater than 5");
       return res.redirect("/listOfElection");
     }
     if (req.body.url.length === 0) {
@@ -456,7 +453,7 @@ app.post(
   connectEnsureLogin.ensureLoggedIn(),
   async (req, res) => {
     if (req.body.title.trim().length <= 5) {
-      req.flash("error", "Title length must grater than 5");
+      req.flash("error", "Title length must greater than 5");
       return res.redirect(`/election/${req.params.eid}/addQuetion`);
     }
     if (req.body.desc.length === 0) {
@@ -464,7 +461,7 @@ app.post(
       return res.redirect(`/election/${req.params.eid}/addQuetion`);
     }
     if (req.body.desc.length <= 15) {
-      req.flash("error", "Description length must grater than 15");
+      req.flash("error", "Description length must greater than 15");
       return res.redirect(`/election/${req.params.eid}/addQuetion`);
     }
     try {
@@ -571,7 +568,7 @@ app.post(
   connectEnsureLogin.ensureLoggedIn(),
   async (req, res) => {
     if (req.body.voterId.trim().length < 3) {
-      req.flash("error", "Voter ID must grater than 2!!");
+      req.flash("error", "Voter ID must greater than 2!!");
       return res.redirect(`/election/${req.params.eid}/voter`);
     }
     if (req.body.password.length === 0) {
@@ -579,7 +576,7 @@ app.post(
       return res.redirect(`/election/${req.params.eid}/voter`);
     }
     if (req.body.password.length <= 5) {
-      req.flash("error", "Password must grater than 5 !!");
+      req.flash("error", "Password must greater than 5 !!");
       return res.redirect(`/election/${req.params.eid}/voter`);
     }
 
@@ -632,7 +629,7 @@ app.post(
       return res.redirect(`/election/${req.params.eid}/voter`);
     }
     if (req.body.pwd.length <= 5) {
-      req.flash("error", "Password must grater than 5 !!");
+      req.flash("error", "Password must greater than 5 !!");
       return res.redirect(`/election/${req.params.eid}/voter`);
     }
     try {
